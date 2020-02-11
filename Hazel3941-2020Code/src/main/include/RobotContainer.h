@@ -9,8 +9,8 @@
 
 #include <frc2/command/Command.h>
 
-#include "commands/ExampleCommand.h"
-#include "subsystems/ExampleSubsystem.h"
+#include "commands/Commands.h"
+#include "subsystems/Subsystems.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
