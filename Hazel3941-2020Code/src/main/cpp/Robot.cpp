@@ -11,7 +11,11 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 ExampleSubsystem Robot::m_subsystem;
-OI Robot::m_oi;
+DriveSubsystem Robot::Drive;
+IndexSubsystem Robot::Indexer;
+IntakeSubsystem Robot::Intake;
+ShooterSubsystem Robot::Shooter;
+OI Robot::oi;
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);

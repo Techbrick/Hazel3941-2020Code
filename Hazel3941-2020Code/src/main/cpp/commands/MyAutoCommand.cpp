@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/MyAutoCommand.h"
+#include "commands/AutoCommands.h"
 
 #include "Robot.h"
 
