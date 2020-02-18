@@ -9,6 +9,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 #include "Robot.h"
+#include "RobotMap.h"
 
 DefaultDriveCommand::DefaultDriveCommand() {
   // Use Requires() here to declare subsystem dependencies
@@ -21,17 +22,24 @@ void DefaultDriveCommand::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void DefaultDriveCommand::Execute() {
     frc::SmartDashboard::PutNumber("Axis X", Robot::oi.DriverController->GetRawAxis(0));
-    double joyX = Robot::oi.DriverController->GetRawAxis(0);
-    double joyY = Robot::oi.DriverController->GetRawAxis(1);
+    double joyX = Robot::oi.DriverController->GetRawAxis(JOYX);
+    double joyY = Robot::oi.DriverController->GetRawAxis(JOYY);
     //joyY = 0;
     //joyZ = 0;
-    if(abs(joyX) <= .05){
+    /*if(abs(joyX) <= .05){
         Robot::Drive.RightController.Set(motorcontrol::ControlMode::PercentOutput, joyY);
         Robot::Drive.LeftController.Set(motorcontrol::ControlMode::PercentOutput, -joyY);
     }else{
         Robot::Drive.RightController.Set(motorcontrol::ControlMode::PercentOutput, joyX / 2);
         Robot::Drive.LeftController.Set(motorcontrol::ControlMode::PercentOutput, joyX / 2);
+    }*/
+    if(abs(joyX) <= 0.1){
+        joyX = 0;
     }
+    if(abs(joyY) <= 0.1){
+        joyY = 0;
+    }
+    Robot::Drive.driveControl.ArcadeDrive(joyX, joyY, false);
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -32,17 +32,17 @@
 
 // CAN loop IDs
 
-static constexpr int RIGHT_DRIVE_CONTROLLER_ID  = 0;
+static constexpr int LEFT_DRIVE_CONTROLLER_ID  = 0;
 
-static constexpr int RIGHT_DRIVE_FOLLOWER_A_ID  = 1;
+static constexpr int LEFT_DRIVE_FOLLOWER_A_ID  = 1;
 
-static constexpr int RIGHT_DRIVE_FOLLOWER_B_ID  = 2;
+static constexpr int LEFT_DRIVE_FOLLOWER_B_ID  = 2;
 
 static constexpr int CLIMB_CONTROLLER_ID        = 3;
 
 static constexpr int INTAKE_ID                  = 4;
 
-static constexpr int FEED_BELT_ID               = 5;
+static constexpr int   FEED_BELT_ID               = 5;
 
 static constexpr int INDEX_WHEEL_ID             = 6;
 
@@ -56,13 +56,25 @@ static constexpr int LIFT_ID                    = 10;
 
 static constexpr int CLIMB_FOLLOWER_ID          = 12;
 
-static constexpr int LEFT_DRIVE_FOLLOWER_A_ID   = 13;
+static constexpr int RIGHT_DRIVE_FOLLOWER_A_ID   = 13;
 
-static constexpr int LEFT_DRIVE_FOLLOWER_B_ID   = 14;
+static constexpr int RIGHT_DRIVE_FOLLOWER_B_ID   = 14;
 
-static constexpr int LEFT_DRIVE_CONTROLLER_ID   = 15;
+static constexpr int RIGHT_DRIVE_CONTROLLER_ID   = 15;
 
 // CAN loop IDs </>
+
+
+
+// Controller Mappings
+
+static constexpr int JOYX = 0;
+
+static constexpr int JOYY = 1;
+
+static constexpr int INTAKE_BUTTON = 0;
+
+// Controller Mappings </>
 
 
 

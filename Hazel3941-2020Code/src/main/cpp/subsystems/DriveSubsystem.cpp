@@ -15,7 +15,8 @@ LeftFollowerA(LEFT_DRIVE_FOLLOWER_A_ID),
 LeftFollowerB(LEFT_DRIVE_FOLLOWER_B_ID),
 RightController(RIGHT_DRIVE_CONTROLLER_ID),
 RightFollowerA(RIGHT_DRIVE_FOLLOWER_A_ID),
-RightFollowerB(RIGHT_DRIVE_FOLLOWER_B_ID)
+RightFollowerB(RIGHT_DRIVE_FOLLOWER_B_ID),
+driveControl(LeftController, RightController)
 {
     LeftController.SetInverted(false);
     LeftController.SetNeutralMode(Brake);

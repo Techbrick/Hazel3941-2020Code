@@ -15,6 +15,7 @@ DriveSubsystem Robot::Drive;
 IndexSubsystem Robot::Indexer;
 IntakeSubsystem Robot::Intake;
 ShooterSubsystem Robot::Shooter;
+ClimberSubsystem Robot::Climber;
 OI Robot::oi;
 
 void Robot::RobotInit() {

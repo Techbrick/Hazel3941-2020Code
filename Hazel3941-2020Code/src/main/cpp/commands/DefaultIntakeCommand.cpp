@@ -8,6 +8,7 @@
 #include "commands/Commands.h"
 
 #include "Robot.h"
+#include "RobotMap.h"
 
 DefaultIntakeCommand::DefaultIntakeCommand() {
   // Use Requires() here to declare subsystem dependencies
@@ -18,7 +19,14 @@ DefaultIntakeCommand::DefaultIntakeCommand() {
 void DefaultIntakeCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void DefaultIntakeCommand::Execute() {}
+void DefaultIntakeCommand::Execute() {
+  if(Robot::oi.DriverController->GetRawButton(INTAKE_BUTTON)){
+    Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
+  }else{
+    Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
+  }
+
+}
 
 // Make this return true when this Command no longer needs to run execute()
 bool DefaultIntakeCommand::IsFinished() { return false; }

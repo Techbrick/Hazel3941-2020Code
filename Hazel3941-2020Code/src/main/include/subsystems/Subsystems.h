@@ -10,6 +10,7 @@
 #include <frc/commands/Subsystem.h>
 #include "commands/Commands.h"
 #include "ctre/Phoenix.h"
+#include "frc/drive/DifferentialDrive.h"
 
 class ExampleSubsystem : public frc::Subsystem {
   public:
@@ -34,12 +35,14 @@ class DriveSubsystem : public frc::Subsystem {
   public:
     DriveSubsystem();
     void InitDefaultCommand() override;
-    TalonSRX RightController;
-    TalonSRX RightFollowerA;
-    TalonSRX RightFollowerB;
-    TalonSRX LeftController;
-    TalonSRX LeftFollowerA;
-    TalonSRX LeftFollowerB;
+    // Remove WPI_ for motion magic or something
+    WPI_TalonSRX RightController;
+    WPI_VictorSPX RightFollowerA;
+    WPI_VictorSPX RightFollowerB;
+    WPI_TalonSRX LeftController;
+    WPI_VictorSPX LeftFollowerA;
+    WPI_VictorSPX LeftFollowerB;
+    frc::DifferentialDrive driveControl;
   private:
 
 };
@@ -57,7 +60,7 @@ class IntakeSubsystem : public frc::Subsystem {
   public:
     IntakeSubsystem();
     void InitDefaultCommand() override;
-
+    TalonSRX intakeMotor;
   private:
 
 };
