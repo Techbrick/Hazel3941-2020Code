@@ -20,7 +20,12 @@ void DefaultIntakeCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void DefaultIntakeCommand::Execute() {
-  if(Robot::oi.DriverController->GetRawButton(INTAKE_BUTTON)){
+  if(Robot::oi.DriverController->GetRawButton(INTAKE_OFF_BUTTON)){
+    Robot::Intake.manualEnabled = false;
+  }else if(Robot::oi.DriverController->GetRawButton(INTAKE_ON_BUTTON)){
+    Robot::Intake.manualEnabled = true;
+  }
+  if(Robot::Intake.manualEnabled && Robot::Intake.indexEnabled){
     Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
   }else{
     Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);

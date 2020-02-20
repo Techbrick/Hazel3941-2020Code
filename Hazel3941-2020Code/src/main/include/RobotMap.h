@@ -72,9 +72,33 @@ static constexpr int JOYX = 0;
 
 static constexpr int JOYY = 1;
 
-static constexpr int INTAKE_BUTTON = 0;
+static constexpr int INTAKE_OFF_BUTTON = 0;
+
+static constexpr int INTAKE_ON_BUTTON = 0;
 
 // Controller Mappings </>
+
+
+
+// (it was I,) DIO Mappings
+
+static constexpr int DIO_INDEXER_1A = 0;
+
+static constexpr int DIO_INDEXER_1B = 0;
+
+static constexpr int DIO_INDEXER_2 = 0;
+
+static constexpr int DIO_INDEXER_3 = 0;
+
+static constexpr int DIO_INDEXER_4 = 0;
+
+static constexpr int DIO_INDEXER_5 = 0;
+
+static constexpr int DIO_SHOOTER_1 = 0;
+
+static constexpr int DIO_SHOOTER_2 = 0;
+
+// DIO Mappings </>
 
 
 

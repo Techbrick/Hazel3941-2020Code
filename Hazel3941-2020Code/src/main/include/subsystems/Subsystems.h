@@ -11,6 +11,7 @@
 #include "commands/Commands.h"
 #include "ctre/Phoenix.h"
 #include "frc/drive/DifferentialDrive.h"
+#include "Objects.h"
 
 class ExampleSubsystem : public frc::Subsystem {
   public:
@@ -51,7 +52,7 @@ class IndexSubsystem : public frc::Subsystem {
   public:
     IndexSubsystem();
     void InitDefaultCommand() override;
-
+    std::vector<Ball> balls;
   private:
 
 };
@@ -61,6 +62,8 @@ class IntakeSubsystem : public frc::Subsystem {
     IntakeSubsystem();
     void InitDefaultCommand() override;
     TalonSRX intakeMotor;
+    bool indexEnabled = false;
+    bool manualEnabled = true;
   private:
 
 };
