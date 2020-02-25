@@ -11,7 +11,9 @@
 #include "commands/Commands.h"
 #include "ctre/Phoenix.h"
 #include "frc/drive/DifferentialDrive.h"
+#include "frc/DigitalInput.h"
 #include "Objects.h"
+#include "RobotMap.h"
 
 class ExampleSubsystem : public frc::Subsystem {
   public:
@@ -38,11 +40,9 @@ class DriveSubsystem : public frc::Subsystem {
     void InitDefaultCommand() override;
     // Remove WPI_ for motion magic or something
     WPI_TalonSRX RightController;
-    WPI_VictorSPX RightFollowerA;
-    WPI_VictorSPX RightFollowerB;
+    WPI_VictorSPX RightFollower;
     WPI_TalonSRX LeftController;
-    WPI_VictorSPX LeftFollowerA;
-    WPI_VictorSPX LeftFollowerB;
+    WPI_VictorSPX LeftFollower;
     frc::DifferentialDrive driveControl;
   private:
 
@@ -52,7 +52,7 @@ class IndexSubsystem : public frc::Subsystem {
   public:
     IndexSubsystem();
     void InitDefaultCommand() override;
-    std::vector<Ball> balls;
+    //std::vector<Ball> balls;
   private:
 
 };
@@ -72,7 +72,9 @@ class ShooterSubsystem : public frc::Subsystem {
   public:
     ShooterSubsystem();
     void InitDefaultCommand() override;
-
+    TalonSRX armMotor;
+    frc::DigitalInput upperLim{DIO_UPPER_LIM};
+    frc::DigitalInput lowerLim{DIO_LOWER_LIM};
   private:
 
 };

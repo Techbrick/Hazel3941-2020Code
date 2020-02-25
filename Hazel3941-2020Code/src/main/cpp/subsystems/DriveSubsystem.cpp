@@ -7,33 +7,23 @@
 
 #include "subsystems/Subsystems.h"
 
-#include "RobotMap.h"
-
 DriveSubsystem::DriveSubsystem() : frc::Subsystem("DriveSubsystem"),
 LeftController(LEFT_DRIVE_CONTROLLER_ID),
-LeftFollowerA(LEFT_DRIVE_FOLLOWER_A_ID),
-LeftFollowerB(LEFT_DRIVE_FOLLOWER_B_ID),
+LeftFollower(LEFT_DRIVE_FOLLOWER_ID),
 RightController(RIGHT_DRIVE_CONTROLLER_ID),
-RightFollowerA(RIGHT_DRIVE_FOLLOWER_A_ID),
-RightFollowerB(RIGHT_DRIVE_FOLLOWER_B_ID),
+RightFollower(RIGHT_DRIVE_FOLLOWER_ID),
 driveControl(LeftController, RightController)
 {
     LeftController.SetInverted(false);
     LeftController.SetNeutralMode(Brake);
-    LeftFollowerA.SetInverted(false);
-    LeftFollowerA.SetNeutralMode(Brake);
-    LeftFollowerA.Follow(LeftController);
-    LeftFollowerB.SetInverted(false);
-    LeftFollowerB.SetNeutralMode(Brake);
-    LeftFollowerB.Follow(LeftController);
+    LeftFollower.SetInverted(false);
+    LeftFollower.SetNeutralMode(Brake);
+    LeftFollower.Follow(LeftController);
     RightController.SetInverted(false);
     RightController.SetNeutralMode(Brake);
-    RightFollowerA.SetInverted(false);
-    RightFollowerA.SetNeutralMode(Brake);
-    RightFollowerA.Follow(RightController);
-    RightFollowerB.SetInverted(false);
-    RightFollowerB.SetNeutralMode(Brake);
-    RightFollowerB.Follow(RightController);
+    RightFollower.SetInverted(false);
+    RightFollower.SetNeutralMode(Brake);
+    RightFollower.Follow(RightController);
 }
 
 void DriveSubsystem::InitDefaultCommand() {

@@ -1,8 +1,10 @@
 #include "subsystems/Subsystems.h"
 
-#include "RobotMap.h"
-
-ShooterSubsystem::ShooterSubsystem() : frc::Subsystem("ShooterSubsystem") {}
+ShooterSubsystem::ShooterSubsystem() : frc::Subsystem("ShooterSubsystem"),
+armMotor(ARM_ID){
+  armMotor.SetInverted(false);
+  armMotor.SetNeutralMode(Brake);
+}
 
 void ShooterSubsystem::InitDefaultCommand() {
   SetDefaultCommand(new DefaultShooterCommand());

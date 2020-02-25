@@ -18,7 +18,15 @@ DefaultShooterCommand::DefaultShooterCommand() {
 void DefaultShooterCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void DefaultShooterCommand::Execute() {}
+void DefaultShooterCommand::Execute() {
+  if(!Robot::Shooter.lowerLim.Get() && Robot::oi.DriverController->GetRawButton(1)){
+    Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
+  }else if(!Robot::Shooter.upperLim.Get() && Robot::oi.DriverController->GetRawButton(4)){
+    Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, -1.0);
+  }else{
+    Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
+  }
+}
 
 // Make this return true when this Command no longer needs to run execute()
 bool DefaultShooterCommand::IsFinished() { return false; }

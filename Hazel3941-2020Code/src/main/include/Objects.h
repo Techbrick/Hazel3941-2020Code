@@ -1,1 +1,1 @@
-struct Ball;
+//struct Ball;

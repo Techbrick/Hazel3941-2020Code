@@ -32,21 +32,19 @@
 
 // CAN loop IDs
 
-static constexpr int LEFT_DRIVE_CONTROLLER_ID  = 0;
+static constexpr int LEFT_DRIVE_CONTROLLER_ID   = 0;
 
-static constexpr int LEFT_DRIVE_FOLLOWER_A_ID  = 1;
-
-static constexpr int LEFT_DRIVE_FOLLOWER_B_ID  = 2;
+static constexpr int LEFT_DRIVE_FOLLOWER_ID     = 1;
 
 static constexpr int CLIMB_CONTROLLER_ID        = 3;
 
 static constexpr int INTAKE_ID                  = 4;
 
-static constexpr int   FEED_BELT_ID               = 5;
+static constexpr int FEED_BELT_ID               = 5;
 
 static constexpr int INDEX_WHEEL_ID             = 6;
 
-static constexpr int ARM_ID                     = 7;
+static constexpr int ARM_ID                     = 12;
 
 static constexpr int SHOOTER_A_ID               = 8;
 
@@ -54,13 +52,9 @@ static constexpr int SHOOTER_B_ID               = 9;
 
 static constexpr int LIFT_ID                    = 10;
 
-static constexpr int CLIMB_FOLLOWER_ID          = 12;
+static constexpr int RIGHT_DRIVE_FOLLOWER_ID    = 14;
 
-static constexpr int RIGHT_DRIVE_FOLLOWER_A_ID   = 13;
-
-static constexpr int RIGHT_DRIVE_FOLLOWER_B_ID   = 14;
-
-static constexpr int RIGHT_DRIVE_CONTROLLER_ID   = 15;
+static constexpr int RIGHT_DRIVE_CONTROLLER_ID  = 15;
 
 // CAN loop IDs </>
 
@@ -72,9 +66,9 @@ static constexpr int JOYX = 0;
 
 static constexpr int JOYY = 1;
 
-static constexpr int INTAKE_OFF_BUTTON = 0;
+static constexpr int INTAKE_OFF_BUTTON = 2;
 
-static constexpr int INTAKE_ON_BUTTON = 0;
+static constexpr int INTAKE_ON_BUTTON = 3;
 
 // Controller Mappings </>
 
@@ -84,19 +78,23 @@ static constexpr int INTAKE_ON_BUTTON = 0;
 
 static constexpr int DIO_INDEXER_1A = 0;
 
-static constexpr int DIO_INDEXER_1B = 0;
+static constexpr int DIO_INDEXER_1B = 1;
 
-static constexpr int DIO_INDEXER_2 = 0;
+static constexpr int DIO_INDEXER_2 = 2;
 
-static constexpr int DIO_INDEXER_3 = 0;
+static constexpr int DIO_INDEXER_3 = 3;
 
-static constexpr int DIO_INDEXER_4 = 0;
+static constexpr int DIO_INDEXER_4 = 4;
 
-static constexpr int DIO_INDEXER_5 = 0;
+static constexpr int DIO_INDEXER_5 = 5;
 
-static constexpr int DIO_SHOOTER_1 = 0;
+static constexpr int DIO_SHOOTER_1 = 6;
 
-static constexpr int DIO_SHOOTER_2 = 0;
+static constexpr int DIO_SHOOTER_2 = 7;
+
+static constexpr int DIO_UPPER_LIM = 8;
+
+static constexpr int DIO_LOWER_LIM = 9;
 
 // DIO Mappings </>
 

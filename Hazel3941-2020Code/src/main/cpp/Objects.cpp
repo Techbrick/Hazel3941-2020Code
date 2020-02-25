@@ -1,5 +1,5 @@
 #include "Objects.h"
 
-struct Ball{
+/*struct Ball{
     float theta;
-};
+};*/
