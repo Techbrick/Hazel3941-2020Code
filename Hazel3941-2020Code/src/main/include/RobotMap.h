@@ -32,29 +32,29 @@
 
 // CAN loop IDs
 
-static constexpr int LEFT_DRIVE_CONTROLLER_ID   = 0;
+static constexpr int LEFT_DRIVE_CONTROLLER_ID   = 1;
 
-static constexpr int LEFT_DRIVE_FOLLOWER_ID     = 1;
+static constexpr int LEFT_DRIVE_FOLLOWER_ID     = 2;
 
-static constexpr int CLIMB_CONTROLLER_ID        = 3;
+static constexpr int INDEXER_ID                 = 3;
 
-static constexpr int INTAKE_ID                  = 4;
+static constexpr int CLIMB_ID                   = 4;
 
-static constexpr int FEED_BELT_ID               = 5;
+static constexpr int INTAKE_ID                  = 5;
 
-static constexpr int INDEX_WHEEL_ID             = 6;
+static constexpr int RIGHT_DRIVE_CONTROLLER_ID  = 6;
 
-static constexpr int ARM_ID                     = 12;
+static constexpr int RIGHT_DRIVE_FOLLOWER_ID    = 7;
 
-static constexpr int SHOOTER_A_ID               = 8;
+static constexpr int LIFT_ID                    = 8;
 
-static constexpr int SHOOTER_B_ID               = 9;
+static constexpr int ARM_ID                     = 9;
 
-static constexpr int LIFT_ID                    = 10;
+static constexpr int BELT_ID                    = 10;
 
-static constexpr int RIGHT_DRIVE_FOLLOWER_ID    = 14;
+static constexpr int SHOOTER_A_ID               = 11;
 
-static constexpr int RIGHT_DRIVE_CONTROLLER_ID  = 15;
+static constexpr int SHOOTER_B_ID               = 12;
 
 // CAN loop IDs </>
 
@@ -69,6 +69,8 @@ static constexpr int JOYY = 1;
 static constexpr int INTAKE_OFF_BUTTON = 2;
 
 static constexpr int INTAKE_ON_BUTTON = 3;
+
+static constexpr int SHIFT_BUTTON = 5;
 
 // Controller Mappings </>
 
@@ -97,6 +99,24 @@ static constexpr int DIO_UPPER_LIM = 8;
 static constexpr int DIO_LOWER_LIM = 9;
 
 // DIO Mappings </>
+
+
+
+// Pneumatics Mapping
+
+static constexpr int SHIFT_UP = 0;
+
+static constexpr int SHIFT_DOWN = 0;
+
+static constexpr int EXTEND_INTAKE_LEFT = 7;
+
+static constexpr int RETRACT_INTAKE_LEFT = 6;
+
+static constexpr int EXTEND_INTAKE_RIGHT = 3;
+
+static constexpr int RETRACT_INTAKE_RIGHT = 2;
+
+// Pneumatics Mapping </>
 
 
 

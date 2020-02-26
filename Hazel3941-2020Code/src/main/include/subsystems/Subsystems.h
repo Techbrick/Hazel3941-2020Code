@@ -12,6 +12,8 @@
 #include "ctre/Phoenix.h"
 #include "frc/drive/DifferentialDrive.h"
 #include "frc/DigitalInput.h"
+#include "frc/Compressor.h"
+#include "frc/DoubleSolenoid.h"
 #include "Objects.h"
 #include "RobotMap.h"
 
@@ -73,6 +75,8 @@ class ShooterSubsystem : public frc::Subsystem {
     ShooterSubsystem();
     void InitDefaultCommand() override;
     TalonSRX armMotor;
+    TalonSRX shooterController;
+    TalonSRX shooterFollower;
     frc::DigitalInput upperLim{DIO_UPPER_LIM};
     frc::DigitalInput lowerLim{DIO_LOWER_LIM};
   private:
