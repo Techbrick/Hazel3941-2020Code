@@ -16,12 +16,14 @@ IndexSubsystem Robot::Indexer;
 IntakeSubsystem Robot::Intake;
 ShooterSubsystem Robot::Shooter;
 ClimberSubsystem Robot::Climber;
+frc::Compressor Robot::Compressor{0};
 OI Robot::oi;
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
   m_chooser.AddOption("My Auto", &m_myAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  Compressor.SetClosedLoopControl(true);
 }
 
 /**
