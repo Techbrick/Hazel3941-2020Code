@@ -25,7 +25,7 @@ class Robot : public frc::TimedRobot {
   static IntakeSubsystem Intake;
   static ShooterSubsystem Shooter;
   static OI oi;
-  static frc::Compressor Compressor;
+  static frc::Compressor robotCompressor;
 
   void RobotInit() override;
   void RobotPeriodic() override;

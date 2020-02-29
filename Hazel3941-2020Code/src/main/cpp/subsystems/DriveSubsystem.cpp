@@ -11,17 +11,17 @@ DriveSubsystem::DriveSubsystem() : frc::Subsystem("DriveSubsystem"),
 LeftController(LEFT_DRIVE_CONTROLLER_ID),
 LeftFollower(LEFT_DRIVE_FOLLOWER_ID),
 RightController(RIGHT_DRIVE_CONTROLLER_ID),
-RightFollower(RIGHT_DRIVE_FOLLOWER_ID),
-driveControl(LeftController, RightController)
+RightFollower(RIGHT_DRIVE_FOLLOWER_ID)/*,
+driveControl(LeftController, RightController)*/
 {
     LeftController.SetInverted(false);
     LeftController.SetNeutralMode(Brake);
     LeftFollower.SetInverted(false);
     LeftFollower.SetNeutralMode(Brake);
     LeftFollower.Follow(LeftController);
-    RightController.SetInverted(false);
+    RightController.SetInverted(true);
     RightController.SetNeutralMode(Brake);
-    RightFollower.SetInverted(false);
+    RightFollower.SetInverted(true);
     RightFollower.SetNeutralMode(Brake);
     RightFollower.Follow(RightController);
 }

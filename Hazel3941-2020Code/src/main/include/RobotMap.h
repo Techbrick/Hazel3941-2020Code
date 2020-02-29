@@ -66,9 +66,9 @@ static constexpr int JOYX = 0;
 
 static constexpr int JOYY = 1;
 
-static constexpr int INTAKE_OFF_BUTTON = 2;
+static constexpr int INTAKE_EXTEND_BUTTON = 2;
 
-static constexpr int INTAKE_ON_BUTTON = 3;
+static constexpr int INTAKE_ENABLE_BUTTON = 3;
 
 static constexpr int SHIFT_BUTTON = 5;
 

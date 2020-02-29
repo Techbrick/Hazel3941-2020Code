@@ -16,14 +16,15 @@ IndexSubsystem Robot::Indexer;
 IntakeSubsystem Robot::Intake;
 ShooterSubsystem Robot::Shooter;
 ClimberSubsystem Robot::Climber;
-frc::Compressor Robot::Compressor{0};
+frc::Compressor Robot::robotCompressor{13};
 OI Robot::oi;
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
   m_chooser.AddOption("My Auto", &m_myAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-  Compressor.SetClosedLoopControl(true);
+  robotCompressor.SetClosedLoopControl(true);
+  
 }
 
 /**
@@ -41,7 +42,9 @@ void Robot::RobotPeriodic() {}
  * can use it to reset any subsystem information you want to clear when the
  * robot is disabled.
  */
-void Robot::DisabledInit() {}
+void Robot::DisabledInit() {
+  Intake.extended = false;
+}
 
 void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
@@ -75,6 +78,7 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
 void Robot::TeleopInit() {
+  //Intake.extended = true;
   // This makes sure that the autonomous stops running when
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove

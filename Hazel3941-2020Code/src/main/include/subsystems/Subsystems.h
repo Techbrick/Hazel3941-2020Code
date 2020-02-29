@@ -45,7 +45,9 @@ class DriveSubsystem : public frc::Subsystem {
     WPI_VictorSPX RightFollower;
     WPI_TalonSRX LeftController;
     WPI_VictorSPX LeftFollower;
-    frc::DifferentialDrive driveControl;
+    //frc::DifferentialDrive driveControl;
+    frc::DoubleSolenoid ShifterSolenoid {13, 0, 1};
+    
   private:
 
 };
@@ -64,8 +66,13 @@ class IntakeSubsystem : public frc::Subsystem {
     IntakeSubsystem();
     void InitDefaultCommand() override;
     TalonSRX intakeMotor;
-    bool indexEnabled = false;
-    bool manualEnabled = true;
+    frc::DoubleSolenoid ExtenderSolenoidA {13, 2, 3};
+    frc::DoubleSolenoid ExtenderSolenoidB {13, 6, 7};
+    bool indexEnabled = true;
+    bool manualEnabled = false;
+    bool buttonLastA = false;
+    bool buttonLastB = false;
+    bool extended = false;
   private:
 
 };

@@ -20,17 +20,41 @@ void DefaultIntakeCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void DefaultIntakeCommand::Execute() {
-  if(Robot::oi.DriverController->GetRawButton(INTAKE_OFF_BUTTON)){
+  /*if(Robot::oi.DriverController->GetRawButton(INTAKE_OFF_BUTTON)){
     Robot::Intake.manualEnabled = false;
   }else if(Robot::oi.DriverController->GetRawButton(INTAKE_ON_BUTTON)){
     Robot::Intake.manualEnabled = true;
+  }*/
+
+  
+  if(Robot::oi.DriverController->GetRawButton(INTAKE_ENABLE_BUTTON)){
+    if(!Robot::Intake.buttonLastA){
+      Robot::Intake.manualEnabled = !Robot::Intake.manualEnabled;
+    }
+    Robot::Intake.buttonLastA = true;
+  }else{
+    Robot::Intake.buttonLastA = false;
   }
   if(Robot::Intake.manualEnabled && Robot::Intake.indexEnabled){
     Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
   }else{
     Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
   }
-
+  if(Robot::oi.DriverController->GetRawButton(INTAKE_EXTEND_BUTTON)){
+    if(!Robot::Intake.buttonLastB){
+      Robot::Intake.extended = !Robot::Intake.extended;
+    }
+    Robot::Intake.buttonLastB = true;
+  }else{
+    Robot::Intake.buttonLastB = false;
+  }
+  if(!Robot::Intake.extended){
+    Robot::Intake.ExtenderSolenoidA.Set(frc::DoubleSolenoid::Value::kForward);
+    Robot::Intake.ExtenderSolenoidB.Set(frc::DoubleSolenoid::Value::kForward);
+  }else{
+    Robot::Intake.ExtenderSolenoidA.Set(frc::DoubleSolenoid::Value::kReverse);
+    Robot::Intake.ExtenderSolenoidB.Set(frc::DoubleSolenoid::Value::kReverse);
+  }
 }
 
 // Make this return true when this Command no longer needs to run execute()
