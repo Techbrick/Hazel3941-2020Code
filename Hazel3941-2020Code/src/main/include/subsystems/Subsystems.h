@@ -56,7 +56,17 @@ class IndexSubsystem : public frc::Subsystem {
   public:
     IndexSubsystem();
     void InitDefaultCommand() override;
-    //std::vector<Ball> balls;
+    bool beltOn = false;
+    bool lastStates[4] = {false, false, false, false};
+    TalonSRX indexWheelMotor;
+    TalonSRX beltMotor;
+    frc::DigitalInput distanceA{DIO_INDEXER_1A};
+    frc::DigitalInput distanceB{DIO_INDEXER_1B};
+    frc::DigitalInput beltA{DIO_INDEXER_2};
+    frc::DigitalInput beltB{DIO_INDEXER_3};
+    frc::DigitalInput beltC{DIO_INDEXER_4};
+    frc::DigitalInput beltD{DIO_INDEXER_5};
+    std::vector<Ball> balls;
   private:
 
 };
