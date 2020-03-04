@@ -26,7 +26,7 @@ void DefaultShooterCommand::Execute() {
   }else{
     Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
   }
-  if(Robot::oi.DriverController->GetRawButton(6)){
+  if(Robot::oi.DriverController->GetRawButton(6) || Robot::oi.OperatorController->GetRawButton(1)){
     Robot::Shooter.shooterController.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
   }else{
     Robot::Shooter.shooterController.Set(motorcontrol::ControlMode::PercentOutput, 0.0);

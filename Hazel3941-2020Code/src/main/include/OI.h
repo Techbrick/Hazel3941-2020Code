@@ -15,6 +15,7 @@ class OI {
   public:
     OI();
     frc::Joystick* DriverController;
+    frc::Joystick* OperatorController;
     frc::DigitalInput dio_indexer_1a{DIO_INDEXER_1A};
     frc::DigitalInput dio_indexer_1b{DIO_INDEXER_1B};
     frc::DigitalInput dio_indexer_2{DIO_INDEXER_2};

@@ -26,34 +26,43 @@ void DefaultIntakeCommand::Execute() {
     Robot::Intake.manualEnabled = true;
   }*/
 
-  
-  if(Robot::oi.DriverController->GetRawButton(INTAKE_ENABLE_BUTTON)){
-    if(!Robot::Intake.buttonLastA){
-      Robot::Intake.manualEnabled = !Robot::Intake.manualEnabled;
+  if(!Robot::oi.OperatorController->GetRawButton(2)){
+    if(Robot::oi.DriverController->GetRawButton(INTAKE_ENABLE_BUTTON)){
+      if(!Robot::Intake.buttonLastA){
+        Robot::Intake.manualEnabled = !Robot::Intake.manualEnabled;
+      }
+      Robot::Intake.buttonLastA = true;
+    }else{
+      Robot::Intake.buttonLastA = false;
     }
-    Robot::Intake.buttonLastA = true;
-  }else{
-    Robot::Intake.buttonLastA = false;
-  }
-  if(Robot::Intake.manualEnabled && Robot::Intake.indexEnabled){
-    Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
-  }else{
-    Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
-  }
-  if(Robot::oi.DriverController->GetRawButton(INTAKE_EXTEND_BUTTON)){
-    if(!Robot::Intake.buttonLastB){
-      Robot::Intake.extended = !Robot::Intake.extended;
+    if(Robot::Intake.manualEnabled && Robot::Intake.indexEnabled){
+      Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
+    }else{
+      Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
     }
-    Robot::Intake.buttonLastB = true;
+    if(Robot::oi.DriverController->GetRawButton(INTAKE_EXTEND_BUTTON)){
+      if(!Robot::Intake.buttonLastB){
+        Robot::Intake.extended = !Robot::Intake.extended;
+      }
+      Robot::Intake.buttonLastB = true;
+    }else{
+      Robot::Intake.buttonLastB = false;
+    }
+    if(!Robot::Intake.extended){
+      Robot::Intake.ExtenderSolenoidA.Set(frc::DoubleSolenoid::Value::kForward);
+      Robot::Intake.ExtenderSolenoidB.Set(frc::DoubleSolenoid::Value::kForward);
+    }else{
+      Robot::Intake.ExtenderSolenoidA.Set(frc::DoubleSolenoid::Value::kReverse);
+      Robot::Intake.ExtenderSolenoidB.Set(frc::DoubleSolenoid::Value::kReverse);
+    }
   }else{
-    Robot::Intake.buttonLastB = false;
-  }
-  if(!Robot::Intake.extended){
-    Robot::Intake.ExtenderSolenoidA.Set(frc::DoubleSolenoid::Value::kForward);
-    Robot::Intake.ExtenderSolenoidB.Set(frc::DoubleSolenoid::Value::kForward);
-  }else{
-    Robot::Intake.ExtenderSolenoidA.Set(frc::DoubleSolenoid::Value::kReverse);
-    Robot::Intake.ExtenderSolenoidB.Set(frc::DoubleSolenoid::Value::kReverse);
+    if(Robot::oi.OperatorController->GetRawButton(6)){
+      Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
+    }else if(Robot::oi.OperatorController->GetRawButton(4)){
+      Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, -1);
+    }else{
+      Robot::Intake.intakeMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
+    }
   }
 }
 

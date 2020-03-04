@@ -12,6 +12,7 @@
 OI::OI() {
   // Process operator interface input here.
   DriverController = new frc::Joystick(0);
+  OperatorController = new frc::Joystick(1);
 	//frc::JoystickButton* exButton = new frc::JoystickButton(DriverController, MAP_ID);
   //exButton->WhenPressed(new exCommand());
 }

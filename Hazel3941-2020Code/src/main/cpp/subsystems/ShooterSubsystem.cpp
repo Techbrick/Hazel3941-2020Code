@@ -6,9 +6,9 @@ shooterController(SHOOTER_A_ID),
 shooterFollower(SHOOTER_B_ID){
   armMotor.SetInverted(false);
   armMotor.SetNeutralMode(Brake);
-  shooterFollower.SetInverted(true);
+  shooterFollower.SetInverted(false);
   shooterFollower.SetNeutralMode(Coast);
-  shooterController.SetInverted(false);
+  shooterController.SetInverted(true);
   shooterController.SetNeutralMode(Coast);
   shooterFollower.Follow(shooterController);
 }
