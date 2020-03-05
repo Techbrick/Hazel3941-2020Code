@@ -72,7 +72,17 @@ static constexpr int INTAKE_ENABLE_BUTTON = 3;
 
 static constexpr int SHIFT_BUTTON = 5;
 
+static constexpr int TRACKAXIS = 2;
+
 // Controller Mappings </>
+
+
+
+// Operator Mappings
+
+//static constexpr int 
+
+// Operator Mappings </>
 
 
 
