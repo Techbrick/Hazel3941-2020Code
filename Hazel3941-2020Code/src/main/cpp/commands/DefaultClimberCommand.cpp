@@ -18,7 +18,20 @@ DefaultClimberCommand::DefaultClimberCommand() {
 void DefaultClimberCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void DefaultClimberCommand::Execute() {}
+void DefaultClimberCommand::Execute() {
+  if(Robot::oi.OperatorController->GetRawButton(9)){
+    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
+  }else if(Robot::oi.OperatorController->GetRawButton(10)){
+    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, -1.0);
+  }else{
+    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, 0.0);
+  }
+  if(Robot::oi.OperatorController->GetRawButton(7)){
+    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
+  }else{
+    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, 0.0);
+  }
+}
 
 // Make this return true when this Command no longer needs to run execute()
 bool DefaultClimberCommand::IsFinished() { return false; }

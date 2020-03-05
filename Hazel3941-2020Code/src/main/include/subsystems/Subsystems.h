@@ -30,6 +30,8 @@ class ExampleSubsystem : public frc::Subsystem {
 class ClimberSubsystem : public frc::Subsystem {
   public:
     ClimberSubsystem();
+    TalonSRX climber;
+    TalonSRX lift;
     void InitDefaultCommand() override;
 
   private:
