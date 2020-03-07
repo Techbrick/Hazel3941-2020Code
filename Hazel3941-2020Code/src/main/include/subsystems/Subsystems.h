@@ -47,7 +47,7 @@ class DriveSubsystem : public frc::Subsystem {
     WPI_VictorSPX RightFollower;
     WPI_TalonSRX LeftController;
     WPI_VictorSPX LeftFollower;
-    //frc::DifferentialDrive driveControl;
+    frc::DifferentialDrive driveControl{LeftController, RightController};
     frc::DoubleSolenoid ShifterSolenoid {13, 0, 1};
     
   private:

@@ -25,11 +25,11 @@ driveControl(LeftController, RightController)*/
     LeftFollower.Follow(LeftController);
 
     RightController.ConfigFactoryDefault();
-    RightController.SetInverted(true);
+    //RightController.SetInverted(true);
     RightController.SetNeutralMode(Brake);
 
     RightFollower.ConfigFactoryDefault();
-    RightFollower.SetInverted(true);
+    //RightFollower.SetInverted(true);
     RightFollower.SetNeutralMode(Brake);
     RightFollower.Follow(RightController);
 }
