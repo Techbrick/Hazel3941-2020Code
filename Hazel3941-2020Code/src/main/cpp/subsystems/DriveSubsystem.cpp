@@ -14,13 +14,21 @@ RightController(RIGHT_DRIVE_CONTROLLER_ID),
 RightFollower(RIGHT_DRIVE_FOLLOWER_ID)/*,
 driveControl(LeftController, RightController)*/
 {
+    LeftController.ConfigFactoryDefault();
+    LeftController.ClearStickyFaults();
     LeftController.SetInverted(false);
     LeftController.SetNeutralMode(Brake);
+
+    LeftFollower.ConfigFactoryDefault();
     LeftFollower.SetInverted(false);
     LeftFollower.SetNeutralMode(Brake);
     LeftFollower.Follow(LeftController);
+
+    RightController.ConfigFactoryDefault();
     RightController.SetInverted(true);
     RightController.SetNeutralMode(Brake);
+
+    RightFollower.ConfigFactoryDefault();
     RightFollower.SetInverted(true);
     RightFollower.SetNeutralMode(Brake);
     RightFollower.Follow(RightController);

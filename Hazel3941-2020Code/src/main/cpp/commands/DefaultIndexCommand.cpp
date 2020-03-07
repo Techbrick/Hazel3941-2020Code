@@ -19,7 +19,7 @@ void DefaultIndexCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void DefaultIndexCommand::Execute() {
-	if(!Robot::oi.OperatorController->GetRawButton(2)){
+	if(!Robot::oi.OperatorController->GetRawButton(MANUAL_OPERATOR_OVERRIDE_BUTTON)){
 		if(Robot::Intake.manualEnabled && (Robot::Indexer.distanceA.Get() || Robot::Indexer.distanceB.Get())){
 			Robot::Indexer.balls.push_back(Ball(-100));
 		}
@@ -70,16 +70,16 @@ void DefaultIndexCommand::Execute() {
 			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
 		}
 	}else{
-    if(Robot::oi.OperatorController->GetRawButton(6)){
-      Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
-	  Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
-    }else if(Robot::oi.OperatorController->GetRawButton(4)){
-      Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, -1);
-	  Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, -1);
-    }else{
-      Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
-	  Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
-    }
+		if(Robot::oi.OperatorController->GetRawButton(OPERATOR_INDEXER_FEED_FORWARD_BUTTON)){
+			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
+			Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
+		}else if(Robot::oi.OperatorController->GetRawButton(OPERATOR_INDEXER_FEED_REVERSE_BUTTON)){
+			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, -1);
+			Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, -1);
+		}else{
+			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
+			Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
+		}
   }
 }
 

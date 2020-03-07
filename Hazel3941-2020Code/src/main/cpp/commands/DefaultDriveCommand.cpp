@@ -21,9 +21,9 @@ void DefaultDriveCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void DefaultDriveCommand::Execute() {
-    frc::SmartDashboard::PutNumber("Axis X", Robot::oi.DriverController->GetRawAxis(0));
-    double joyX = Robot::oi.DriverController->GetRawAxis(JOYX);
-    double joyY = Robot::oi.DriverController->GetRawAxis(JOYY);
+    frc::SmartDashboard::PutNumber("Axis X", Robot::oi.DriverController->GetRawAxis(DRIVE_CONTROLLER_DRIVE_AXIS_X));
+    double joyX = Robot::oi.DriverController->GetRawAxis(DRIVE_CONTROLLER_DRIVE_AXIS_X);
+    double joyY = Robot::oi.DriverController->GetRawAxis(DRIVE_CONTROLLER_DRIVE_AXIS_Y);
     //joyY = 0;
     //joyZ = 0;
     if(abs(joyX) <= .05){
@@ -40,7 +40,7 @@ void DefaultDriveCommand::Execute() {
         joyY = 0;
     }
     //Robot::Drive.driveControl.ArcadeDrive(0, 0, false);
-    if(!Robot::oi.DriverController->GetRawButton(SHIFT_BUTTON)){
+    if(!Robot::oi.DriverController->GetRawButton(DRIVE_CONTROLLER_SHIFT_BUTTON)){
         Robot::Drive.ShifterSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
     }else{
         Robot::Drive.ShifterSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);

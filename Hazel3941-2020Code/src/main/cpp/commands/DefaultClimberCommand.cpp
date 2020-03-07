@@ -19,16 +19,18 @@ void DefaultClimberCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void DefaultClimberCommand::Execute() {
-  if(Robot::oi.OperatorController->GetRawButton(9)){
-    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
-  }else if(Robot::oi.OperatorController->GetRawButton(10)){
-    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, -1.0);
+  if(Robot::oi.OperatorController->GetRawButton(OPERATOR_CLIMB_UP_BUTTON)){
+    Robot::Climber.climber.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
+  }else if(Robot::oi.OperatorController->GetRawButton(OPERATOR_CLIMB_RELEASE_BUTTON)){
+    Robot::Climber.climber.Set(motorcontrol::ControlMode::PercentOutput, -1.0);
   }else{
-    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, 0.0);
+    Robot::Climber.climber.Set(motorcontrol::ControlMode::PercentOutput, 0.0);
   }
-  if(Robot::oi.OperatorController->GetRawButton(7)){
+  if(Robot::oi.OperatorController->GetRawButton(OPERATOR_LIFT_UP_BUTTON)){
     Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
-  }else{
+  }else if(Robot::oi.OperatorController->GetRawButton(OPERATOR_LIFT_DOWN_BUTTON)){
+    Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, -1.0);
+  } else {
     Robot::Climber.lift.Set(motorcontrol::ControlMode::PercentOutput, 0.0);
   }
 }

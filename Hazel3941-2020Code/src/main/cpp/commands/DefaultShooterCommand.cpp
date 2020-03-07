@@ -19,17 +19,40 @@ void DefaultShooterCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void DefaultShooterCommand::Execute() {
-  if(/*!Robot::Shooter.lowerLim.Get() && */Robot::oi.DriverController->GetRawButton(1)){
-    Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, 0.2);
-  }else if(/*!Robot::Shooter.upperLim.Get() && */Robot::oi.DriverController->GetRawButton(4)){
-    Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, -0.2);
-  }else{
-    Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
-  }
-  if(Robot::oi.DriverController->GetRawButton(6) || Robot::oi.OperatorController->GetRawButton(1)){
-    Robot::Shooter.shooterController.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
-  }else{
-    Robot::Shooter.shooterController.Set(motorcontrol::ControlMode::PercentOutput, 0.0);
+  if(!Robot::oi.OperatorController->GetRawButton(MANUAL_OPERATOR_OVERRIDE_BUTTON)){
+    if(/*!Robot::Shooter.lowerLim.Get() && */Robot::oi.DriverController->GetRawButton(DRIVE_CONTROLLER_ROLL_SHOOTER_BACKWARD)){
+      Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, -0.2);
+    }else if(/*!Robot::Shooter.upperLim.Get() && */Robot::oi.DriverController->GetRawButton(DRIVE_CONTROLLER_ROLL_SHOOTER_FORWARD)){
+      Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, 0.2);
+    }else{
+      Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
+    }
+    if(Robot::oi.DriverController->GetRawButton(DRIVE_CONTROLLER_RIGHT_TRIGGER_BUTTON)){
+      Robot::Shooter.shooterController.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
+    }else{
+      Robot::Shooter.shooterController.Set(motorcontrol::ControlMode::PercentOutput, 0.0);
+    }
+    
+  } else {
+    // operator is taking control manually
+    if(OPERATOR_JOYSTICK_FORWARDREVERSE_FLIP){
+      Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, -(Robot::oi.OperatorController->GetRawAxis(OPERATOR_JOYSTICK_FORWARDREVERSE_AXIS_ID)));
+    } else {
+      Robot::Shooter.armMotor.Set(motorcontrol::ControlMode::PercentOutput, Robot::oi.OperatorController->GetRawAxis(OPERATOR_JOYSTICK_FORWARDREVERSE_AXIS_ID));
+    }
+    if(Robot::oi.OperatorController->GetRawButton(OPERATOR_SHOOTER_SPIN_ENABLE_BUTTON)){
+        double inputspeed = 0.0;
+        if(OPERATOR_SHOOTER_SPEED_AXIS_FLIP){
+          // shift value higher, remap to 0-1, flip
+          inputspeed = (Robot::oi.OperatorController->GetRawAxis(OPERATOR_SHOOTER_SPEED_AXIS_ID) + 1) / 2;
+        } else {
+          // shift value higher, remap to 0-1
+          inputspeed = (-Robot::oi.OperatorController->GetRawAxis(OPERATOR_SHOOTER_SPEED_AXIS_ID) + 1) / 2;
+        }
+        Robot::Shooter.shooterController.Set(motorcontrol::ControlMode::PercentOutput, inputspeed);
+      } else {
+        Robot::Shooter.shooterController.Set(motorcontrol::ControlMode::PercentOutput, 0);
+      }
   }
 }
 
