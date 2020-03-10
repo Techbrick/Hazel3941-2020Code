@@ -59,6 +59,7 @@ class IndexSubsystem : public frc::Subsystem {
     IndexSubsystem();
     void InitDefaultCommand() override;
     bool beltOn = false;
+    bool indexWheelOn = false;
     bool lastStates[6] = {false, false, false, false, false, false};
     TalonSRX indexWheelMotor;
     TalonSRX beltMotor;

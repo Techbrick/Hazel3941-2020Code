@@ -55,6 +55,7 @@ void DefaultIndexCommand::Execute() {
 				if(!Robot::Indexer.lastStates[4]){
 					Robot::Indexer.lastStates[4] = true;
 					Robot::Indexer.balls.at(0).x = -30;
+					Robot::Indexer.indexWheelOn = true;
 				}else{
 					Robot::Indexer.lastStates[4] = false;
 					Robot::Indexer.balls.at(0).x = -20;
@@ -67,15 +68,21 @@ void DefaultIndexCommand::Execute() {
 				}else{
 					Robot::Indexer.lastStates[5] = false;
 					Robot::Indexer.balls.at(0).x = 0;
+					Robot::Indexer.indexWheelOn = false;
 				}
 			}
 		}else{
 			Robot::Indexer.beltOn = false;
 		}
-		if(Robot::Intake.extended && Robot::Indexer.beltOn){
+		if(Robot::Intake.extended && Robot::Indexer.beltOn && Robot::Intake.manualEnabled){
 			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
 		}else{
 			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
+		}
+		if(Robot::Indexer.indexWheelOn && Robot::Intake.manualEnabled){
+			Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
+		}else{
+			Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
 		}
 	}else{
 		if(Robot::oi.OperatorController->GetRawButton(OPERATOR_INDEXER_FEED_FORWARD_BUTTON)){
