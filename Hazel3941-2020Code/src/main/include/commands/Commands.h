@@ -8,6 +8,7 @@
 #pragma once
 
 #include <frc/commands/Command.h>
+#include "frc/smartdashboard/SmartDashboard.h"
 
 class ExampleCommand : public frc::Command {
  public:

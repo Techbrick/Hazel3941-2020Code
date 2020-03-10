@@ -8,4 +8,5 @@ struct Ball{
             float x;
             float deg;
         };
+        ~Ball(){}
 };
