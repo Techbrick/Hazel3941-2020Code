@@ -69,6 +69,8 @@ class IndexSubsystem : public frc::Subsystem {
     frc::DigitalInput beltC{DIO_INDEXER_4};
     frc::DigitalInput beltD{DIO_INDEXER_5};
     std::vector<Ball> balls;
+    bool drivenManually = false;
+
   private:
 
 };
@@ -99,6 +101,5 @@ class ShooterSubsystem : public frc::Subsystem {
     //frc::DigitalInput upperLim{DIO_UPPER_LIM};
     frc::DigitalInput lowerLim{DIO_LOWER_LIM};
     bool drivenManually = false;
-
-  private:
+  private: 
 };

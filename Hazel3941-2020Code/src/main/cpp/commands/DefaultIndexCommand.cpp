@@ -22,6 +22,10 @@ void DefaultIndexCommand::Execute() {
 	//frc::SmartDashboard::PutNumberArray("ballArray", Robot::Indexer.balls);
 	frc::SmartDashboard::PutNumber("ballArraySize", Robot::Indexer.balls.size());
 	if(!Robot::oi.OperatorController->GetRawButton(MANUAL_OPERATOR_OVERRIDE_BUTTON)){
+		if(Robot::Indexer.drivenManually == true){
+			Robot::Indexer.beltOn = false;
+			Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
+		}
 		if(Robot::Intake.manualEnabled && ((!Robot::Indexer.distanceA.Get() && Robot::Indexer.lastStates[0]) || (!Robot::Indexer.distanceB.Get() && Robot::Indexer.lastStates[1]))){
 			Robot::Indexer.balls.push_back(Ball(-100));
 		}
@@ -78,6 +82,7 @@ void DefaultIndexCommand::Execute() {
 			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 0);
 		}
 	}else{
+		Robot::Indexer.drivenManually = true;
 		if(Robot::oi.OperatorController->GetRawButton(OPERATOR_INDEXER_FEED_FORWARD_BUTTON)){
 			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
 			Robot::Indexer.indexWheelMotor.Set(motorcontrol::ControlMode::PercentOutput, 1);
