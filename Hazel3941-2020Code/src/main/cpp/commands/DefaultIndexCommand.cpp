@@ -38,39 +38,39 @@ void DefaultIndexCommand::Execute() {
 		if(Robot::Indexer.balls.size() != 0 && Robot::Indexer.balls.at(Robot::Indexer.balls.size() - 1).x < 0){
 			Robot::Indexer.beltOn = true;
 			if(Robot::Indexer.lastStates[2] != Robot::Indexer.beltA.Get()){
-				if(!Robot::Indexer.lastStates[2]){
-					Robot::Indexer.lastStates[2] = true;
+				if(Robot::Indexer.lastStates[2]){
+					Robot::Indexer.lastStates[2] = false;
 					Robot::Indexer.balls.at(0).x = -90;
 				}else{
-					Robot::Indexer.lastStates[2] = false;
+					Robot::Indexer.lastStates[2] = true;
 					Robot::Indexer.balls.at(0).x = -80;
 				}
 			}
 			if(Robot::Indexer.lastStates[3] != Robot::Indexer.beltB.Get()){
-				if(!Robot::Indexer.lastStates[3]){
-					Robot::Indexer.lastStates[3] = true;
+				if(Robot::Indexer.lastStates[3]){
+					Robot::Indexer.lastStates[3] = false;
 					Robot::Indexer.balls.at(0).x = -70;
 				}else{
-					Robot::Indexer.lastStates[3] = false;
+					Robot::Indexer.lastStates[3] = true;
 					Robot::Indexer.balls.at(0).x = -60;
 				}
 			}
 			if(Robot::Indexer.lastStates[4] != Robot::Indexer.beltC.Get()){
-				if(!Robot::Indexer.lastStates[4]){
-					Robot::Indexer.lastStates[4] = true;
+				if(Robot::Indexer.lastStates[4]){
+					Robot::Indexer.lastStates[4] = false;
 					Robot::Indexer.balls.at(0).x = -30;
 					Robot::Indexer.indexWheelOn = true;
 				}else{
-					Robot::Indexer.lastStates[4] = false;
+					Robot::Indexer.lastStates[4] = true;
 					Robot::Indexer.balls.at(0).x = -20;
 				}
 			}
 			if(Robot::Indexer.lastStates[5] != Robot::Indexer.beltD.Get()){
-				if(!Robot::Indexer.lastStates[5]){
-					Robot::Indexer.lastStates[5] = true;
+				if(Robot::Indexer.lastStates[5]){
+					Robot::Indexer.lastStates[5] = false;
 					Robot::Indexer.balls.at(0).x = -10;
 				}else{
-					Robot::Indexer.lastStates[5] = false;
+					Robot::Indexer.lastStates[5] = true;
 					Robot::Indexer.balls.at(0).x = 0;
 					Robot::Indexer.indexWheelOn = false;
 				}
@@ -78,6 +78,7 @@ void DefaultIndexCommand::Execute() {
 		}else{
 			Robot::Indexer.beltOn = false;
 		}
+		frc::SmartDashboard::PutBoolean("wheelOn", Robot::Indexer.indexWheelOn);
 		if(Robot::Intake.extended && Robot::Indexer.beltOn && Robot::Intake.manualEnabled){
 			Robot::Indexer.beltMotor.Set(motorcontrol::ControlMode::PercentOutput, 1.0);
 		}else{

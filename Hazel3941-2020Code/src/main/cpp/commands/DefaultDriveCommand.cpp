@@ -41,12 +41,12 @@ void DefaultDriveCommand::Execute() {
         joyY = 0;
     }
     */
-    if(abs(joyX) < 0.05){
+    /*if(abs(joyX) < 0.015){
         joyX = 0;
     }
-    if(abs(joyY) < 0.05){
+    if(abs(joyY) < 0.015){
         joyY = 0;
-    }
+    }*/
     Robot::Drive.driveControl.ArcadeDrive(joyY, joyX, false);
 
 

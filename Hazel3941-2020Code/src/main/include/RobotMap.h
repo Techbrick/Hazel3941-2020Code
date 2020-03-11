@@ -85,6 +85,8 @@ static constexpr int DRIVE_CONTROLLER_ROLL_SHOOTER_FORWARD = DRIVE_CONTROLLER_Y_
 
 static constexpr int DRIVE_CONTROLLER_RIGHT_TRIGGER_BUTTON = 6;
 
+static constexpr int TRACK_BUTTON = 6;
+
 // Driver Controller Mappings </>
 
 

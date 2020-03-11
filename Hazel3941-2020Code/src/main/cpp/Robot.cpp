@@ -21,7 +21,7 @@ OI Robot::oi;
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
-  m_chooser.AddOption("My Auto", &m_myAuto);
+  m_chooser.AddOption("Base Auto", &BaseAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
   robotCompressor.SetClosedLoopControl(true);
   
@@ -89,6 +89,9 @@ void Robot::TeleopInit() {
   }
   Indexer.balls.clear();
   Intake.manualEnabled = false;
+  for(int i = 0; i < 6; i++){
+    Indexer.lastStates[i] = true;
+  }
 }
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }

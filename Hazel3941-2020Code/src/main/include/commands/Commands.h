@@ -69,3 +69,13 @@ class DefaultClimberCommand : public frc::Command {
   void End() override;
   void Interrupted() override;
 };
+
+class trackCommand : public frc::Command {
+ public:
+  trackCommand();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
+};

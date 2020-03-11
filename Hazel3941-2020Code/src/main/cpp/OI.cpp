@@ -7,12 +7,13 @@
 
 #include "OI.h"
 #include "RobotMap.h"
+#include "commands/Commands.h"
 #include <frc/buttons/JoystickButton.h>
 
 OI::OI() {
   // Process operator interface input here.
   DriverController = new frc::Joystick(0);
   OperatorController = new frc::Joystick(1);
-	//frc::JoystickButton* exButton = new frc::JoystickButton(DriverController, MAP_ID);
-  //exButton->WhenPressed(new exCommand());
+	frc::JoystickButton* exButton = new frc::JoystickButton(DriverController, TRACK_BUTTON);
+  exButton->WhenPressed(new trackCommand());
 }

@@ -9,23 +9,32 @@
 
 #include "Robot.h"
 
-MyAutoCommand::MyAutoCommand() {
+baseAutoCommand::baseAutoCommand() {
   // Use Requires() here to declare subsystem dependencies
   Requires(&Robot::m_subsystem);
 }
 
 // Called just before this Command runs the first time
-void MyAutoCommand::Initialize() {}
+void baseAutoCommand::Initialize() {
+  timer = 100;
+}
 
 // Called repeatedly when this Command is scheduled to run
-void MyAutoCommand::Execute() {}
+void baseAutoCommand::Execute() {
+  if(timer > 0){
+    Robot::Drive.driveControl.ArcadeDrive(0.5, 0, false);
+    timer--;
+  }else{
+    Robot::Drive.driveControl.ArcadeDrive(0, 0, false);
+  }
+}
 
 // Make this return true when this Command no longer needs to run execute()
-bool MyAutoCommand::IsFinished() { return false; }
+bool baseAutoCommand::IsFinished() { return !(timer > 0); }
 
 // Called once after isFinished returns true
-void MyAutoCommand::End() {}
+void baseAutoCommand::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void MyAutoCommand::Interrupted() {}
+void baseAutoCommand::Interrupted() {}
