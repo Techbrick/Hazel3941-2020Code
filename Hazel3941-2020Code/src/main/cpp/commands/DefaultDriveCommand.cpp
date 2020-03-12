@@ -50,7 +50,7 @@ void DefaultDriveCommand::Execute() {
     Robot::Drive.driveControl.ArcadeDrive(joyY, joyX, false);
 
 
-    if(!Robot::oi.DriverController->GetRawButton(DRIVE_CONTROLLER_SHIFT_BUTTON)){
+    if(!(Robot::oi.DriverController->GetRawAxis(DRIVE_SHIFT_AXIS) > 0.75)){
         Robot::Drive.ShifterSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
     }else{
         Robot::Drive.ShifterSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);

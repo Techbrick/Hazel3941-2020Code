@@ -26,6 +26,7 @@ class Robot : public frc::TimedRobot {
   static ShooterSubsystem Shooter;
   static OI oi;
   static frc::Compressor robotCompressor;
+  static std::shared_ptr<NetworkTable> table;
 
   void RobotInit() override;
   void RobotPeriodic() override;
