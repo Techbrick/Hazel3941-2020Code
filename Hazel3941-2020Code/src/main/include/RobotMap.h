@@ -56,6 +56,8 @@ static constexpr int SHOOTER_A_ID               = 11;
 
 static constexpr int SHOOTER_B_ID               = 12;
 
+static constexpr int ARM_PIGEON_ID              = 0;
+
 // CAN loop IDs </>
 
 
